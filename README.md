@@ -6,7 +6,8 @@ This project presents a comparative evaluation of Physics-Informed Neural Networ
 
 This work was carried out as my **Final Year Project (MATH 499) and submitted in partial fulfillment of the requirements of the THE BACHELOR OF SCIENCE IN COMPUTATIONAL MATHEMATICS**.
 
-The complete report is available as [Report.pdf](Report.pdf)
+The complete report is available as [Report.pdf](Report.pdf) \
+The code is available as [epfsp.ipynb](epfsp.ipynb)
 
 ## Reference
 M. Raissi, P. Perdikaris, and G. E. Karniadakis, *Physics Informed Deep Learning (Part I): Data-driven Solutions of Nonlinear Partial Differential Equations*, arXiv:1711.10561, 2017. https://arxiv.org/abs/1711.10561
