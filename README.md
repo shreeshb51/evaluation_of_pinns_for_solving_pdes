@@ -1,0 +1,2 @@
+# evaluation_of_pinns_for_solving_pdes
+
