@@ -215,4 +215,4 @@ M. Raissi, P. Perdikaris, and G. E. Karniadakis, *Physics Informed Deep Learning
 
 ## License
 
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
