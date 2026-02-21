@@ -33,8 +33,6 @@ The code is available as [eopfsp.ipynb](eopfsp.ipynb)
 - [Primary References](#primary-references)
 - [License](#license)
 
----
-
 ## Features
 
 - **Three Solution Methods:** Analytical (ground truth), FDM (3 schemes), PINN
@@ -42,8 +40,6 @@ The code is available as [eopfsp.ipynb](eopfsp.ipynb)
 - **PINN Hyperparameter Search:** 864 configurations across depth, width, activation, optimizer, LR, and initialization
 - **Reproducible:** Fixed seed (42), deterministic CUDA
 - **Visualization:** Training curves, error comparisons, collocation point plots
-
----
 
 ## Problem Formulation
 
@@ -63,8 +59,6 @@ $$\frac{\partial u}{\partial t} = \alpha \nabla^2 u, \quad \alpha = 1.1644 \time
 | 1D | 1,500 | 15 nodes | 100 |
 | 2D | 22,500 | 15×15 nodes | 100 |
 | 3D | 337,500 | 15×15×15 nodes | 100 |
-
----
 
 ## Methodology
 
@@ -94,8 +88,6 @@ Fully connected feedforward networks trained on weighted PDE + BC + IC loss. Col
 | 2D | 30,000 | 10,000 | 20,000 | 60,000 |
 | 3D | 60,000 | 20,000 | 40,000 | 120,000 |
 
----
-
 ## Model Architecture (PINN)
 
 **Best Configurations per Dimension:**
@@ -107,8 +99,6 @@ Fully connected feedforward networks trained on weighted PDE + BC + IC loss. Col
 | 3D | 6 | 128 | tanh | 5×10⁻⁴ | Adam | adaptive_gradnorm | Xavier | 893.9 | 4,503 |
 
 **Key findings:** tanh consistently outperforms GELU/SiLU/Mish; Adam-only achieves best results; Adam→LBFGS switching provides no benefit; deeper/wider networks required for higher dimensions.
-
----
 
 ## Training Configuration
 
@@ -140,8 +130,6 @@ Three weighting strategies tested: equal, adaptive_gradnorm, adaptive_lr_anneali
 | 2D | 3.34×10⁻⁸ | 7.07×10⁻⁶ | 2.73×10⁻⁵ | 4.79×10⁻⁵ |
 | 3D | 1.81×10⁻⁸ | 1.40×10⁻⁵ | 4.30×10⁻⁵ | 3.94×10⁻⁵ |
 
----
-
 ## Results & Analysis
 
 | Dim | Method | Rel L2 (%) | L∞ Error | Accuracy (%) | Time (s) | Speedup vs Explicit |
@@ -165,8 +153,6 @@ Three weighting strategies tested: equal, adaptive_gradnorm, adaptive_lr_anneali
 |:--:|
 | ![Errors](plots/errors.png) |
 
----
-
 ### Discretization Efficiency
 
 | Dimension | FDM Space-Time Nodes | PINN Collocation Points | Efficiency Ratio (FDM/PINN) |
@@ -176,8 +162,6 @@ Three weighting strategies tested: equal, adaptive_gradnorm, adaptive_lr_anneali
 | 3D | 337,500 | 120,000 | **2.81×** |
 
 PINN uses 4× more points in 1D/2D but becomes **2.8× more point-efficient in 3D** while simultaneously achieving superior accuracy — a crossover effect driven by the curse of dimensionality.
-
----
 
 ## Mathematical Foundations
 
@@ -194,8 +178,6 @@ $$\mathcal{L}_{\text{PDE}} = \frac{1}{N_f}\sum_{i=1}^{N_f}\!\left|\frac{\partial
 ### FDM Stability
 
 Explicit scheme stability: r = α·(dt/dx²) < 0.5. Actual values (r = 0.0137 / 0.0274 / 0.0411 for 1D/2D/3D respecitively) are all safely below the critical threshold.
-
----
 
 ## Known Issues & Limitations
 
@@ -214,8 +196,6 @@ Current implementation assumes [0,1]ⁿ domains. Irregular geometries require me
 **5. Analytical Solver Scaling**
 3D analytical computation is 860× slower than 2D due to triple-product Fourier summation — practical only as an offline ground truth.
 
----
-
 ## Dependencies
 
 ```
@@ -229,13 +209,9 @@ scikit-learn>=1.3.0
 
 **Hardware:** NVIDIA GPU with ≥16GB VRAM recommended for 3D PINN experiments.
 
----
-
 ## Primary References
 
 M. Raissi, P. Perdikaris, and G. E. Karniadakis, *Physics Informed Deep Learning (Part I): Data-driven Solutions of Nonlinear Partial Differential Equations*, arXiv:1711.10561, 2017. https://arxiv.org/abs/1711.10561
-
----
 
 ## License
 
